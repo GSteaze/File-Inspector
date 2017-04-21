@@ -6,6 +6,28 @@ using namespace std;
 namespace fileinspector
 {
 	/*
+	Takes input from user to select which text to inspect
+	*/
+	int UserInput();
+
+	/*
+	Tests to see if the values are the proper type and within a specified range
+
+	@param variable the input from the user
+	@param minimum the minimum value of the desired range
+	@param maximum the maximum value of the desired range
+	*/
+	int InvalidInput(int variable, int min, int max);
+
+	/*
+	Writes the select words into the arrray selectedWords[]
+
+	@param selectedWords[] the array that the words will be stored in
+	@param size the size of the array
+	*/
+	void FillSelectedWordsArray(string selectedWords[], int size);
+
+	/*
 	Fills a specified array with a default value
 
 	@param list[] the array to be iniatialized
@@ -49,6 +71,22 @@ namespace fileinspector
 	@return isPunctuation returns true if the string is solely puncuation or the string ends with punctuation
 	*/
 	bool IsPunctuation(char letter);
+
+	/*
+	Removes leading and trailing punctuation from the string
+
+	@param word the current string input from the chosen file
+
+	@return numberOfNonLetters the updated number of non letter characters in the text
+	*/
+	int RemovePuncuation(string word, int numberOfNonLetters);
+
+	/*
+	Replaces all uppercase letters in a string with lowercase letters
+
+	@param word the current string input from the chosen file
+	*/
+	string ToLowercase(string word);
 
 	/*
 	Checks if the character is a number

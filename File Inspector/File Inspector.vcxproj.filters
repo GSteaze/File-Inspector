@@ -27,4 +27,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="SelectWords.txt" />
+    <Text Include="A Modest Proposal.txt" />
+    <Text Include="Apology.txt" />
+  </ItemGroup>
 </Project>

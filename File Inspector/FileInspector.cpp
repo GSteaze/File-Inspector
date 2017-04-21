@@ -1,12 +1,70 @@
 #include <iostream>
 #include <iomanip>
+#include <fstream>
+#include <string>
 
 #include "FileInspector.h"
 
 using namespace std;
 
+const int kEndOfLine = 1024;
+
 namespace fileinspector
 {
+	/*
+	Takes input from user to select which text to inspect
+	*/
+	int UserInput()
+	{
+		int textNumber = 0;
+
+		cout << "Which text would you like to inspect?" << endl
+			<< "1. A Modest Proposal" << endl
+			<< "2. Apology" << endl
+			<< "Enter 1 or 2 to select the text : ";
+		cin >> textNumber;
+		textNumber = InvalidInput(textNumber, 1, 2);
+		return textNumber;
+	}
+
+	/*
+	Tests to see if the values are the proper type and within a specified range
+
+	@param variable the input from the user
+	@param minimum the minimum value of the desired range
+	@param maximum the maximum value of the desired range
+	*/
+	int InvalidInput(int variable, int min, int max)
+	{
+		bool isInvalid = cin.fail() || (variable < min || variable > max);
+		while (isInvalid)
+		{
+			cin.clear();
+			cin.ignore(kEndOfLine, '\n');
+			cout << "Please Try Again : ";
+			cin >> variable;
+			isInvalid = cin.fail() || (variable < min || variable > max);
+		}
+		return variable;
+	}
+
+	/*
+	Writes the select words into the arrray selectedWords[]
+
+	@param selectedWords[] the array that the words will be stored in
+	@param size the size of the array
+	*/
+	void FillSelectedWordsArray(string selectedWords[], int size)
+	{
+		ifstream fin;
+		fin.open("SelectWords.txt");
+		for (int index = 0; index < size; index++)
+		{
+			fin >> selectedWords[index];
+		}
+		fin.close();
+	}
+
 	/*
 	Fills a specified array with a default value
 
@@ -63,8 +121,8 @@ namespace fileinspector
 	{
 		bool isVowel = 0;
 
-		if (letter == 'a' || letter == 'e' || letter == 'i' || letter == 'o' || letter == 'u' || letter == 'y' ||
-			letter == 'A' || letter == 'E' || letter == 'I' || letter == 'O' || letter == 'U' || letter == 'Y')
+		if (letter == 'a' || letter == 'e' || letter == 'i' || letter == 'o' || letter == 'u' ||
+			letter == 'A' || letter == 'E' || letter == 'I' || letter == 'O' || letter == 'U')
 		{
 			isVowel = 1;
 			return isVowel;
@@ -96,6 +154,36 @@ namespace fileinspector
 	}
 
 	/*
+	Removes leading and trailing punctuation from the string
+
+	@param word the current string input from the chosen file
+
+	@return numberOfNonLetters the updated number of non letter characters in the text
+	*/
+	int RemovePuncuation(string word, int numberOfNonLetters)
+	{
+		
+		return numberOfNonLetters;
+	}
+
+	/*
+	Replaces all uppercase letters in a string with lowercase letters
+
+	@param word the current string input from the chosen file
+	*/
+	string ToLowercase(string word)
+	{
+		for (int index = 0; index < word.size(); index++)
+		{
+			if (word[index] >= 'A'  && word[index] <= 'Z')
+			{
+				word[index] = (word[index] + 32);
+			}
+		}
+		return word;
+	}
+
+	/*
 	Checks if the character is a number
 
 	@param character the current character
@@ -117,6 +205,14 @@ namespace fileinspector
 
 	void TestCode()
 	{
+		//RemovePuncuation
+		string wordWithPunctuationOne = "!Dog?";
+		wordWithPunctuationOne = RemovePuncuation(wordWithPunctuationOne);
+		
+		//ToLowercase
+		string wordUpperOne = "ABC";
+		wordUpperOne = ToLowercase(wordUpperOne);
+		cout << wordUpperOne << endl;
 		return;
 	}
 }
