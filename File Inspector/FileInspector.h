@@ -5,7 +5,60 @@ using namespace std;
 
 namespace fileinspector
 {
+	/*
+	Fills a specified array with a default value
 
+	@param list[] the array to be iniatialized
+	@param size the size of the array
+	@param the default value to be inserted into the array
+	*/
+	void InitializeList(string list[], int size, string defaultValue);
+
+	/*
+	Fills a specified array with a default value
+
+	@param list[] the array to be iniatialized
+	@param size the size of the array
+	@param the default value to be inserted into the array
+	*/
+	void InitializeList(int list[], int size, int defaultValue);
+
+	/*
+	Fills a specified array with a default value
+
+	@param list[] the array to be iniatialized
+	@param size the size of the array
+	@param the default value to be inserted into the array
+	*/
+	void InitializeList(float list[], int size, float defaultValue);
+
+	/*
+	Checks to if the given letter is a vowel in the English alphabet
+
+	@ param letter a single ascii character
+
+	@return isVowel returns true if the given character is a vowel
+	*/
+	bool IsVowel(char letter);
+
+	/*
+	Checks if a word contains (or is solely) a character or symbol other than the 26 letters of the English alphabet
+
+	@param word the English word currently in the input stream
+
+	@return isPunctuation returns true if the string is solely puncuation or the string ends with punctuation
+	*/
+	bool IsPunctuation(char letter);
+
+	/*
+	Checks if the character is a number
+
+	@param character the current character
+	*/
+	bool IsNumber(char word);
+
+	/*Contains code to test functions*/
+	void TestCode();
 }
 
 #endif
