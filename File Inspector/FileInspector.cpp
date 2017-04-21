@@ -4,10 +4,9 @@
 #include "FileInspector.h"
 
 using namespace std;
-using namespace fileinspector;
 
-int main()
+namespace fileinspector
 {
 
-	return 0;
+
 }
