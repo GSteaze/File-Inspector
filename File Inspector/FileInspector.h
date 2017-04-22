@@ -55,6 +55,13 @@ namespace fileinspector
 	void InitializeList(float list[], int size, float defaultValue);
 
 	/*
+	Increments by one the corresponding position in the array numberOfLetters when a letter is found
+
+	@param letter the given character
+	*/
+	void LetterCounter(int numberOfLetters[], int size, char letter);
+
+	/*
 	Checks to if the given letter is a vowel in the English alphabet
 
 	@ param letter a single ascii character
@@ -73,15 +80,6 @@ namespace fileinspector
 	bool IsPunctuation(char letter);
 
 	/*
-	Removes leading and trailing punctuation from the string
-
-	@param word the current string input from the chosen file
-
-	@return numberOfNonLetters the updated number of non letter characters in the text
-	*/
-	int RemovePuncuation(string word, int numberOfNonLetters);
-
-	/*
 	Replaces all uppercase letters in a string with lowercase letters
 
 	@param word the current string input from the chosen file
@@ -94,6 +92,11 @@ namespace fileinspector
 	@param character the current character
 	*/
 	bool IsNumber(char word);
+
+	/*
+	Fills an array with each letter of the alphabet
+	*/
+	void AlphabetArray(char alphabet[], int kNumberOfLettersInAlphabet);
 
 	/*Contains code to test functions*/
 	void TestCode();

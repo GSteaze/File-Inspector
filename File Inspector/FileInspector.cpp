@@ -8,6 +8,12 @@
 using namespace std;
 
 const int kEndOfLine = 1024;
+const int kSelectedWordsListSize = 100;
+const int kNumberOfLettersInAlphabet = 26;
+const int kColumnWidthOne = 8;
+const int kColumnWidthTwo = 15;
+const int kNumberOfSignificantDigits = 4;
+
 
 namespace fileinspector
 {
@@ -111,6 +117,119 @@ namespace fileinspector
 	}
 
 	/*
+	Increments by one the corresponding position in the array numberOfLetters when a letter is found
+
+	@param letter the given character
+	*/
+	void LetterCounter(int numberOfLetters[], int size, char letter)
+	{
+		if (letter == 'a')
+		{
+			numberOfLetters[0]++;
+		}
+		else if (letter == 'b')
+		{
+			numberOfLetters[1]++;
+		}
+		else if (letter == 'c')
+		{
+			numberOfLetters[2]++;
+		}
+		else if (letter == 'd')
+		{
+			numberOfLetters[3]++;
+		}
+		else if (letter == 'e')
+		{
+			numberOfLetters[4]++;
+		}
+		else if (letter == 'f')
+		{
+			numberOfLetters[5]++;
+		}
+		else if (letter == 'g')
+		{
+			numberOfLetters[6]++;
+		}
+		else if (letter == 'h')
+		{
+			numberOfLetters[7]++;
+		}
+		else if (letter == 'i')
+		{
+			numberOfLetters[8]++;
+		}
+		else if (letter == 'j')
+		{
+			numberOfLetters[9]++;
+		}
+		else if (letter == 'k')
+		{
+			numberOfLetters[10]++;
+		}
+		else if (letter == 'l')
+		{
+			numberOfLetters[11]++;
+		}
+		else if (letter == 'm')
+		{
+			numberOfLetters[12]++;
+		}
+		else if (letter == 'n')
+		{
+			numberOfLetters[13]++;
+		}
+		else if (letter == 'o')
+		{
+			numberOfLetters[14]++;
+		}
+		else if (letter == 'p')
+		{
+			numberOfLetters[15]++;
+		}
+		else if (letter == 'q')
+		{
+			numberOfLetters[16]++;
+		}
+		else if (letter == 'r')
+		{
+			numberOfLetters[17]++;
+		}
+		else if (letter == 's')
+		{
+			numberOfLetters[18]++;
+		}
+		else if (letter == 't')
+		{
+			numberOfLetters[19]++;
+		}
+		else if (letter == 'u')
+		{
+			numberOfLetters[20]++;
+		}
+		else if (letter == 'v')
+		{
+			numberOfLetters[21]++;
+		}
+		else if (letter == 'w')
+		{
+			numberOfLetters[22]++;
+		}
+		else if (letter == 'x')
+		{
+			numberOfLetters[23]++;
+		}
+		else if (letter == 'y')
+		{
+			numberOfLetters[24]++;
+		}
+		else if (letter == 'z')
+		{
+			numberOfLetters[25]++;
+		}
+	}
+
+	/*
 	Checks to if the given letter is a vowel in the English alphabet
 
 	@ param letter a single ascii character
@@ -154,19 +273,6 @@ namespace fileinspector
 	}
 
 	/*
-	Removes leading and trailing punctuation from the string
-
-	@param word the current string input from the chosen file
-
-	@return numberOfNonLetters the updated number of non letter characters in the text
-	*/
-	int RemovePuncuation(string word, int numberOfNonLetters)
-	{
-		
-		return numberOfNonLetters;
-	}
-
-	/*
 	Replaces all uppercase letters in a string with lowercase letters
 
 	@param word the current string input from the chosen file
@@ -203,11 +309,46 @@ namespace fileinspector
 		}
 	}
 
+	/*
+	Fills an array with each letter of the alphabet
+	*/
+	void AlphabetArray(char alphabet[], int kNumberOfLettersInAlphabet)
+	{
+		for (int index = 0; index < kNumberOfLettersInAlphabet; index++)
+		{
+			if (index == 0)
+			{
+				alphabet[index] = 'A';
+			}
+			if (index > 0)
+			{
+				alphabet[index] = ('A' + index);
+			}
+
+		}
+	}
+
 	void TestCode()
 	{
-		//RemovePuncuation
-		string wordWithPunctuationOne = "!Dog?";
-		wordWithPunctuationOne = RemovePuncuation(wordWithPunctuationOne);
+		//AlphabetArray
+		char alphabet[kNumberOfLettersInAlphabet];
+		AlphabetArray(alphabet, kNumberOfLettersInAlphabet);
+		for (int index = 0; index < kNumberOfLettersInAlphabet; index++)
+		{
+			cout << alphabet[index] << endl;
+		}
+
+		//RemovePunctuation
+		string word = "!Dog?";
+		if (IsPunctuation(word[0]))
+		{
+			word.erase(0, 1);
+		}
+		if (IsPunctuation(word[(word.size()-1)]))
+		{
+			word.erase((word.size() - 1), 1);	
+		}
+		cout << word << endl;
 		
 		//ToLowercase
 		string wordUpperOne = "ABC";
